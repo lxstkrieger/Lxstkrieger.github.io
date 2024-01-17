@@ -1,0 +1,34 @@
+import discord
+import os
+from dotenv import load_dotenv
+import logging
+from logging.handlers import RotatingFileHandler
+
+
+intents = discord.Intents.default()
+
+bot = discord.Bot(
+    intents=intents,
+    debug_guilds=[1092275892090327113]  #Server id's
+)
+
+log_formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+file_handler = RotatingFileHandler('bot.log', maxBytes=500 * 1024 * 1024, backupCount=2)
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(log_formatter)
+logging.getLogger().addHandler(file_handler)
+
+
+@bot.event
+async def on_ready():
+    print(f"{bot.user} ist online")
+    logging.info(f'Logged in as {bot.user.name} ({bot.user.id})')
+
+
+if __name__ == "__main__":
+    for filename in os.listdir("cogs"):
+        if filename.endswith(".py"):
+            bot.load_extension(f"cogs.{filename[:-3]}")
+
+    load_dotenv()
+    bot.run(os.getenv("TOKEN"))

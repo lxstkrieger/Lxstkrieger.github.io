@@ -1,0 +1,53 @@
+[WARNING] 2024-01-17 05:31:00 - PyNaCl is not installed, voice will NOT be supported
+[WARNING] 2024-01-17 05:31:14 - PyNaCl is not installed, voice will NOT be supported
+[ERROR] 2024-01-17 05:32:35 - An error occurred in Userinfo: 'ApplicationContext' object has no attribute 'mention'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\userinfo.py", line 19, in userinfo
+    description=f"{member.mention}",
+                   ^^^^^^^^^^^^^^
+AttributeError: 'ApplicationContext' object has no attribute 'mention'
+[ERROR] 2024-01-17 05:39:34 - An error occurred in Unban: object BanIterator can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 23, in bans
+    bans = await ctx.guild.bans()
+           ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object BanIterator can't be used in 'await' expression
+[ERROR] 2024-01-17 05:45:10 - An error occurred in Unban: object BanIterator can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 23, in bans
+    bans = await ctx.guild.bans()
+           ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object BanIterator can't be used in 'await' expression
+[ERROR] 2024-01-17 05:46:53 - An error occurred in Unban: 'BanIterator' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 26, in bans
+    for entry in bans:
+TypeError: 'BanIterator' object is not iterable
+[ERROR] 2024-01-17 05:52:05 - An error occurred in Unban: object BanIterator can't be used in 'await' expression
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 23, in bans
+    bans = await ctx.guild.bans()
+           ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object BanIterator can't be used in 'await' expression
+[ERROR] 2024-01-17 05:53:04 - An error occurred in Unban: 'User' object has no attribute 'user'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 33, in bans
+    value=f"Username: {entry.user.name}#{entry.user.discriminator}\nReason: {entry.reason}\nUser ID: {entry.user.id}\nIs Bot: {entry.user.bot}",
+                       ^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'user'
+[ERROR] 2024-01-17 05:54:58 - An error occurred in Unban: 'NoneType' object has no attribute 'id'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 54, in unban
+    await ctx.guild.unban(member)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\guild.py", line 3117, in unban
+    await self._state.http.unban(user.id, self.id, reason=reason)
+                                 ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+[ERROR] 2024-01-17 05:55:35 - An error occurred in Unban: 'NoneType' object has no attribute 'id'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\unban.py", line 54, in unban
+    await ctx.guild.unban(member)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\guild.py", line 3117, in unban
+    await self._state.http.unban(user.id, self.id, reason=reason)
+                                 ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
