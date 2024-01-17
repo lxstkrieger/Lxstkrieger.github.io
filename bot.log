@@ -57,3 +57,54 @@ Traceback (most recent call last):
     banned_users = await ctx.guild.bans()
                    ^^^^^^^^^^^^^^^^^^^^^^
 TypeError: object BanIterator can't be used in 'await' expression
+[WARNING] 2024-01-17 08:19:06 - We are being rate limited. Retrying in 0.30 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:06 - We are being rate limited. Retrying in 0.30 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:07 - We are being rate limited. Retrying in 0.38 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:08 - We are being rate limited. Retrying in 0.54 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:09 - We are being rate limited. Retrying in 0.59 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:10 - We are being rate limited. Retrying in 0.57 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:11 - We are being rate limited. Retrying in 0.30 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:12 - We are being rate limited. Retrying in 0.49 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[WARNING] 2024-01-17 08:19:13 - We are being rate limited. Retrying in 0.60 seconds. Handled under the bucket "1124304903783841852:None:/channels/{channel_id}/messages/{message_id}"
+[ERROR] 2024-01-17 08:46:08 - Task exception was never retrieved
+future: <Task finished name='discord-ui-view-timeout-633304ed232e9b40e91389edfe7d26bd' coro=<Paginator.on_timeout() done, defined at C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py:575> exception=NotFound('404 Not Found (error code: 10008): Unknown Message')>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py", line 583, in on_timeout
+    await self.message.edit(
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 1194, in edit
+    return await self._state._interaction.edit_original_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 428, in edit_original_response
+    data = await adapter.edit_original_interaction_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\webhook\async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
+[ERROR] 2024-01-17 08:52:52 - Task exception was never retrieved
+future: <Task finished name='discord-ui-view-timeout-de8e8dbcd6da8de5a87ccac40fb582af' coro=<Paginator.on_timeout() done, defined at C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py:575> exception=NotFound('404 Not Found (error code: 10008): Unknown Message')>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py", line 583, in on_timeout
+    await self.message.edit(
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 1194, in edit
+    return await self._state._interaction.edit_original_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 428, in edit_original_response
+    data = await adapter.edit_original_interaction_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\webhook\async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
+[ERROR] 2024-01-17 09:33:06 - Task exception was never retrieved
+future: <Task finished name='discord-ui-view-timeout-78043da3e78c8949d9ad03ef5ea0d677' coro=<Paginator.on_timeout() done, defined at C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py:575> exception=NotFound('404 Not Found (error code: 10008): Unknown Message')>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\ext\pages\pagination.py", line 583, in on_timeout
+    await self.message.edit(
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 1194, in edit
+    return await self._state._interaction.edit_original_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\interactions.py", line 428, in edit_original_response
+    data = await adapter.edit_original_interaction_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\discord\webhook\async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
