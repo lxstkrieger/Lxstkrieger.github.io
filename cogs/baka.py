@@ -14,7 +14,7 @@ class Baka(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def kiss(self, ctx, member: discord.Member):
+    async def baka(self, ctx, member: discord.Member):
 
         resp = requests.get("https://nekos.best/api/v2/baka")
         data = resp.json()

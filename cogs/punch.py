@@ -14,7 +14,7 @@ class Punch(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def kiss(self,ctx, member: discord.Member):
+    async def punch(self,ctx, member: discord.Member):
 
         resp = requests.get("https://nekos.best/api/v2/punch")
         data = resp.json()
