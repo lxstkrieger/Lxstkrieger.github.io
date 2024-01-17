@@ -1,10 +1,8 @@
-# This example requires the 'message_content' privileged intent for prefixed commands.
-
 from typing import List
 import discord
 from discord.ext import commands
 from discord.commands import slash_command
-
+import logging
 
 # Defines a custom button that contains the logic of the game.
 # The ['TicTacToe'] bit is for type hinting purposes to tell your IDE or linter
@@ -127,11 +125,16 @@ class TIKTAKTOE(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_ready(self):
+        logging.info(f'Cog {self.__class__.__name__} is ready.')
+
     @slash_command()
     async def tic(self, ctx: commands.Context):
-        """Starts a tic-tac-toe game with yourself."""
-        # Setting the reference message to ctx.message makes the bot reply to the member's message.
-        await ctx.send("Tic Tac Toe: X goes first", view=TicTacToe(), reference=ctx.message)
+        try:
+            await ctx.send("Tic Tac Toe: X goes first", view=TicTacToe(), reference=ctx.message)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot: discord.Bot):

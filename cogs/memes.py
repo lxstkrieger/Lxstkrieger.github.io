@@ -2,22 +2,30 @@ import discord
 from discord.ext import commands,tasks
 from discord.commands import slash_command
 import requests
+import logging
 
 class Memes(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_ready(self):
+        logging.info(f'Cog {self.__class__.__name__} is ready.')
+
     @slash_command(description='sends a meme')
     async def meme(self,ctx):
-        # Make a request to the meme API
-        meme_response = requests.get('https://meme-api.com/gimme')
+        try:
+            # Make a request to the meme API
+            meme_response = requests.get('https://meme-api.com/gimme')
 
-        if meme_response.status_code == 200:
-            meme_data = meme_response.json()
-            meme_url = meme_data.get('url')
-            await ctx.respond(f'Here is a meme for you: {meme_url}')
-        else:
-            await ctx.send('Error fetching meme.')
+            if meme_response.status_code == 200:
+                meme_data = meme_response.json()
+                meme_url = meme_data.get('url')
+                await ctx.respond(f'Here is a meme for you: {meme_url}')
+            else:
+                await ctx.send('Error fetching meme.')
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot: discord.Bot):
