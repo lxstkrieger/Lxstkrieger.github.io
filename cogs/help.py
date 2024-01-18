@@ -48,11 +48,11 @@ class Help(commands.Cog):
                                       color=discord.Color.magenta(),
                                       ).add_field(name="baka command", value=" A User is a BAKA  ``` /baka <@Member>```",
                                                   inline=False)
-                        .add_field(name="hug command", value=" Hug a User  ``` /hug <@Member>```", inline=False)
-                        .add_field(name="punch command", value=" Punch a User  ``` /punch <@Member>```", inline=False)
-                        .add_field(name="kiss command", value=" Kiss a User  ``` /kiss <@Member>```", inline=False)
-                        .add_field(name="tic tac toe command", value=" play tic tac toe with someone  ``` /tic``", inline=False)
-                        .set_thumbnail(url=ctx.guild.icon)
+                                       .add_field(name="hug command", value=" Hug a User  ``` /hug <@Member>```", inline=False)
+                                       .add_field(name="punch command", value=" Punch a User  ``` /punch <@Member>```", inline=False)
+                                       .add_field(name="kiss command", value=" Kiss a User  ``` /kiss <@Member>```", inline=False)
+                                       .add_field(name="tic tac toe command", value=" play tic tac toe with someone  ``` /tic``", inline=False)
+                                       .set_thumbnail(url=ctx.guild.icon)
                     ],
                 ),
 
@@ -62,9 +62,9 @@ class Help(commands.Cog):
                                       color=discord.Color.magenta(),
                                       ).add_field(name="create Ticket command",
                                                   value=" Create a Ticket  ``` /createticket```", inline=False)
-                        .add_field(name="close Ticket command", value=" Close a Ticket(Moderator Only)  ``` /closeticket```", inline=False)
-                        .add_field(name="Setup Ticketsystem command", value=" Setup Ticketsystem(Administrator Only)  ``` /setupticketsystem```", inline=False)
-                        .set_thumbnail(url=ctx.guild.icon)
+                                       .add_field(name="close Ticket command", value=" Close a Ticket(Moderator Only)  ``` /closeticket```", inline=False)
+                                       .add_field(name="Setup Ticketsystem command", value=" Setup Ticketsystem(Administrator Only)  ``` /setupticketsystem```", inline=False)
+                                       .set_thumbnail(url=ctx.guild.icon)
 
                     ],
                 ),
@@ -74,6 +74,7 @@ class Help(commands.Cog):
                                       color=discord.Color.magenta(),
                                       ).add_field(name="Rank Command", value=" Show's Rank from a User  ``` /rank <@Member>```", inline=False)
                                        .add_field(name="Leaderboard Command", value=" Show's the Server Leaderboard  ``` /leaderboard ```", inline=False)
+                                       .add_field(name="Reset Rank Command", value=" Resets the rank and rank role from a specific Member.(MOD ONLY)  ``` /rank_reset ```", inline=False)
                                        .set_thumbnail(url=ctx.guild.icon)
 
                     ],
