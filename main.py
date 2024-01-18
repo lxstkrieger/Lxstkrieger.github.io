@@ -13,7 +13,7 @@ bot = discord.Bot(
 )
 
 log_formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-file_handler = RotatingFileHandler('bot.log', maxBytes=500 * 1024 * 1024, backupCount=2)
+file_handler = RotatingFileHandler('bot.log', maxBytes=5 * 1024 * 1024, backupCount=2)
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(log_formatter)
 logging.getLogger().addHandler(file_handler)
