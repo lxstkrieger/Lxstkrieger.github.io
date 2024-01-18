@@ -1,8 +1,9 @@
 import discord
-from discord.ext import commands,tasks
+from discord.ext import commands
 from discord.commands import slash_command
 import requests
 import logging
+
 
 class Memes(commands.Cog):
     def __init__(self, bot: discord.Bot):
@@ -13,7 +14,7 @@ class Memes(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description='sends a meme')
-    async def meme(self,ctx):
+    async def meme(self, ctx):
         try:
             # Make a request to the meme API
             meme_response = requests.get('https://meme-api.com/gimme')

@@ -4,6 +4,7 @@ from discord.commands import slash_command
 import logging
 import requests
 
+
 class Kiss(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -13,7 +14,7 @@ class Kiss(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def kiss(self,ctx, member: discord.Member):
+    async def kiss(self, ctx, member: discord.Member):
 
         resp = requests.get("https://nekos.best/api/v2/kiss")
         data = resp.json()

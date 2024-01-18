@@ -56,11 +56,10 @@ class WarnSystem(commands.Cog):
     async def warn(self, ctx, member: discord.Member, *, reason=None):
         try:
             self.add_warning(ctx.guild.id, member.id, reason)
-            warn_embed= discord.Embed(color=discord.Color.red(),
-                                      description=f"{member.mention} has been warned for: {reason}")
+            warn_embed = discord.Embed(color=discord.Color.red(), description=f"{member.mention} has been warned for: {reason}")
             warn_embed.set_thumbnail(url=member.display_avatar)
             warn_embed.set_footer(text=f"Embed created from {self.bot.user}")
-            await ctx.respond(embed=warn_embed,ephemeral=True)
+            await ctx.respond(embed=warn_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
@@ -81,7 +80,7 @@ class WarnSystem(commands.Cog):
                     description=f"{member.mention} has no warnings.")
                 no_warnings_embed.set_thumbnail(url=member.display_avatar)
                 no_warnings_embed.set_footer(text=f"Embed created from {self.bot.user}")
-                await ctx.respond(embed=no_warnings_embed,ephemeral=True)
+                await ctx.respond(embed=no_warnings_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
@@ -96,12 +95,13 @@ class WarnSystem(commands.Cog):
             )
             remove_warn_embed.set_thumbnail(url=member.display_avatar)
             remove_warn_embed.set_footer(text=f"Embed created from {self.bot.user}")
-            await ctx.respond(embed=remove_warn_embed,ephemeral=True)
+            await ctx.respond(embed=remove_warn_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
     def cog_unload(self):
         self.conn.close()
+
 
 def setup(bot):
     bot.add_cog(WarnSystem(bot))

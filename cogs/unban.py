@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
-from discord.commands import slash_command,Option
+from discord.commands import slash_command, Option
 import logging
+
 
 class Unban(commands.Cog):
     def __init__(self, bot: discord.Bot):
@@ -13,10 +14,10 @@ class Unban(commands.Cog):
 
     @slash_command(name="unban", description="unbans specified member.")
     @commands.has_permissions(ban_members=True)
-    async def unban(self, ctx, user: discord.User, reason: Option(str, "Enter a reason for the unban", required = False, default = 'no reason given')):
+    async def unban(self, ctx, user: discord.User, reason: Option(str, "Enter a reason for the unban", required=False, default='no reason given')):
         try:
             await ctx.guild.unban(user)
-            unban_embed=discord.Embed(
+            unban_embed = discord.Embed(
                 title="Success",
                 description=f"{user.mention} has been unbanned.",
                 color=discord.Color.green()
@@ -25,7 +26,6 @@ class Unban(commands.Cog):
             await ctx.response.send_message(embed=unban_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
-
 
 
 def setup(bot: discord.Bot):

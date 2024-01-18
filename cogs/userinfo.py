@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.commands import slash_command
 import logging
 
+
 class Userinfo(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -25,6 +26,7 @@ class Userinfo(commands.Cog):
             await ctx.respond(embed=userinfo_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
+
 
 def setup(bot: discord.Bot):
     bot.add_cog(Userinfo(bot))

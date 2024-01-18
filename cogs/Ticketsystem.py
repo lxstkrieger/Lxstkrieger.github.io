@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.commands import slash_command
 import logging
 
+
 class Ticketsystem(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -38,21 +39,21 @@ class Ticketsystem(commands.Cog):
                 await ctx.respond(f"Your Ticket Channel was Created. here Your Ticket: {ticket_channel.mention}", ephemeral=True)
             else:
                 await ctx.send(
-                    "Error: Role 'Ticket-Helper' not found. Please create the role before using the ticket system.")
+                    "Error: Role '🙋🏻‍♂️Support Team🙋🏻‍♂️' not found. Please create the role before using the ticket system.")
 
             embed = discord.Embed(color=0xff8103)
             embed.add_field(name="Support Ticket", value=f"Ticket by {ctx.author.mention}", inline=False)
-            embed.add_field(name="Option:", value=":lock: - ```/close - <#ticket>```", inline=False)
+            embed.add_field(name="Option:", value=":lock: - ```/closeticket - <#ticket>```", inline=False)
             embed.set_footer(text=f"Ticket | {ctx.author}")
             await ticket_channel.send(embed=embed)
             await ticket_channel.send(
-                f"Hello, {ctx.author.mention}! Please describe your problem as well as you can so that a Ticket-Helper can help you.")
+                f"Hello, {ctx.author.mention}! Please describe your problem as well as you can so that a 🙋🏻‍♂️Support Team🙋🏻‍♂️ can help you.")
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
     @slash_command(description="Close a Ticket(Only Team Member can Use This!)")
     @commands.has_permissions(manage_channels=True)
-    async def closeticket(self,ctx, channel: discord.TextChannel):
+    async def closeticket(self, ctx):
         try:
             await ctx.channel.delete()
         except Exception as e:
@@ -60,17 +61,15 @@ class Ticketsystem(commands.Cog):
 
     @slash_command(description="Setup the Ticketsystem")
     @commands.has_permissions(administrator=True)
-    async def setupticketsystem(self,ctx):
+    async def setupticketsystem(self, ctx):
         try:
-            guild = ctx.guild
             await ctx.guild.create_role(name="🙋🏻‍♂️Support Team🙋🏻‍♂️", colour=discord.Colour(0xE03400))
             em = discord.Embed(title="Information",
-                               description="Ticket System was successfully installed. | Attention If you run ```/setup``` again, the ticket system will no longer work and report an error. Since there are there 2 roles of ticket helper you have to delete one then, This code is still in development for problems/questions contact me on Discord : Talha2018#0001",
+                               description="Ticket System was successfully installed. | Attention If you run ```/setupticketsystem``` again, the ticket system will no longer work and report an error. Since there are there 2 roles of ticket helper you have to delete one then, This code is still in development for problems/questions contact me on Discord : Talha2018#0001",
                                color=0x00ff00)
             await ctx.send(embed=em)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
-
 
 
 def setup(bot: discord.Bot):

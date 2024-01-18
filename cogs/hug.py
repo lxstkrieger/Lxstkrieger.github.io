@@ -4,6 +4,7 @@ from discord.commands import slash_command
 import logging
 import requests
 
+
 class Hug(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -13,7 +14,7 @@ class Hug(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def hug(self,ctx, member: discord.Member):
+    async def hug(self, ctx, member: discord.Member):
 
         resp = requests.get("https://nekos.best/api/v2/hug")
         data = resp.json()
@@ -24,6 +25,7 @@ class Hug(commands.Cog):
         )
         kiss_embed.set_image(url=image)
         await ctx.respond(embed=kiss_embed)
+
 
 def setup(bot: discord.Bot):
     bot.add_cog(Hug(bot))

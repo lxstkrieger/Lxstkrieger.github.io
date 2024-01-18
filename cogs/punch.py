@@ -14,7 +14,7 @@ class Punch(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def punch(self,ctx, member: discord.Member):
+    async def punch(self, ctx, member: discord.Member):
 
         resp = requests.get("https://nekos.best/api/v2/punch")
         data = resp.json()
@@ -25,7 +25,6 @@ class Punch(commands.Cog):
         )
         kiss_embed.set_image(url=image)
         await ctx.respond(embed=kiss_embed)
-
 
 
 def setup(bot: discord.Bot):

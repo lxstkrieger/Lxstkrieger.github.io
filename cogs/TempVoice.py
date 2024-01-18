@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.commands import slash_command
 import logging
 
+
 class TemporaryVoice(commands.Cog):
 
     temporary_channels = []
@@ -12,7 +13,7 @@ class TemporaryVoice(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState)    :
+    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
         possible_channel_name = f"{member.display_name}'s area"
         if after.channel:
             if after.channel.name == "temp":
@@ -25,7 +26,6 @@ class TemporaryVoice(commands.Cog):
                 temp_channel = await temporary_category.create_voice_channel(name="voice")
                 await member.move_to(temp_channel)
                 self.temporary_categories.append(temp_channel.id)
-
 
         if before.channel:
             if before.channel.id in self.temporary_channels:
@@ -46,15 +46,16 @@ class TemporaryVoice(commands.Cog):
                 if voice_channel.id in self.temporary_channels and voice_channel.id not in self.locked_channels:
                     if voice_channel.created_at and voice_channel.created_at == ctx.author.joined_at:
                         self.locked_channels.add(voice_channel.id)
-                        await ctx.send(f"{ctx.author.mention}, der Kanal wurde gesperrt. Niemand kann mehr beitreten.")
+                        await ctx.send(f"{ctx.author.mention}, the channel has been blocked. No one can join anymore. ")
                     else:
-                        await ctx.send("Du kannst nur temporäre Kanäle sperren, die du erstellt hast.")
+                        await ctx.send("You can only block temporary channels that you have created.")
                 else:
-                    await ctx.send("Du kannst nur temporäre Kanäle sperren, zu denen du bereits beigetreten bist.")
+                    await ctx.send("You can only block temporary channels that you have already joined.")
             else:
-                await ctx.send("Du musst in einem Sprachkanal sein, um diesen Befehl zu verwenden.")
+                await ctx.send("You must be in a voice channel to use this command.")
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
+
 
 def setup(bot: discord.Bot):
     bot.add_cog(TemporaryVoice(bot))

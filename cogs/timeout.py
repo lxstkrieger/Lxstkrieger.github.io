@@ -6,6 +6,7 @@ import datetime
 from datetime import datetime
 import humanfriendly
 
+
 class Timeout(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -16,11 +17,10 @@ class Timeout(commands.Cog):
 
     @slash_command()
     @commands.has_permissions(ban_members=True)
-    async def timeout(ctx, member: discord.Member, time=None, reason=None):
+    async def timeout(self, ctx, member: discord.Member, time=None, reason=None):
         time = humanfriendly.parse_timespan(time)
         await member.timeout(until=discord.utils.utcnow() + datetime.timedelta(seconds=time), reason=reason)
-        await ctx.send(f"{member} callate un rato anda {time}")
-
+        await ctx.send(f"{member} was put into timeout for {time}")
 
 
 def setup(bot: discord.Bot):

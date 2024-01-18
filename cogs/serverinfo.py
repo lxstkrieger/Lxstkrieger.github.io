@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.commands import slash_command
 import logging
 
+
 class Serverinfo(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
@@ -11,10 +12,10 @@ class Serverinfo(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="shows the Serverinformations")
-    async def serverinfo(self,ctx):
+    @slash_command(description="shows the Server information's")
+    async def serverinfo(self, ctx):
         try:
-            serverinfo_embed= discord.Embed(
+            serverinfo_embed = discord.Embed(
                 title=f"Serverinfo for {ctx.guild.name}",
                 color=discord.Color.blurple()
             )

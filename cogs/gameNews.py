@@ -3,7 +3,8 @@ from discord.ext import commands
 from discord.commands import slash_command
 import logging
 
-class gameNews(commands.Cog):
+
+class GameNews(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
@@ -13,4 +14,4 @@ class gameNews(commands.Cog):
 
 
 def setup(bot: discord.Bot):
-    bot.add_cog(gameNews(bot))
+    bot.add_cog(GameNews(bot))

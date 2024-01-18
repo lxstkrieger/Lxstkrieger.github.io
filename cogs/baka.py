@@ -27,6 +27,5 @@ class Baka(commands.Cog):
         await ctx.respond(embed=kiss_embed)
 
 
-
 def setup(bot: discord.Bot):
     bot.add_cog(Baka(bot))

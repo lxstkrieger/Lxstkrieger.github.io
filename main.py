@@ -4,12 +4,13 @@ from dotenv import load_dotenv
 import logging
 from logging.handlers import RotatingFileHandler
 
+load_dotenv()
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 
 bot = discord.Bot(
     intents=intents,
-    debug_guilds=[1092275892090327113]  #Server id's
+    debug_guilds=[1092275892090327113]
 )
 
 log_formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
@@ -30,5 +31,4 @@ if __name__ == "__main__":
         if filename.endswith(".py"):
             bot.load_extension(f"cogs.{filename[:-3]}")
 
-    load_dotenv()
-    bot.run(os.getenv("TOKEN"))
+bot.run(os.getenv("TOKEN"))
