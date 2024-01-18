@@ -9,6 +9,8 @@ The bot has:
  5. TempVoice
  6. Fun commands
  7. Tic Tac Toe
+ 8. Docker Image on Dockerhub (lxstkrieger/empire_bot:1.0)
+    https://hub.docker.com/repository/docker/lxstkrieger/empire_bot/general
 
 feel free to use my code if it helps you.
 if there are any bugs just open an issue and I will try to take care of it.
