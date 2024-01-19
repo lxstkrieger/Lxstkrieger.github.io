@@ -1,6 +1,6 @@
 ## Empire Bot
 
-I'm not the best developer. i've been doing this as a hobby for a long time. i wanted my first project on github to be a discord bot because i want people to have fun with it.
+I'm not the best developer. I've been doing this as a hobby for a long time. I wanted my first project on GitHub to be a discord bot because I want people to have fun with it.
 The bot has:
  1. Moderation
  2. Level-system(simple)
