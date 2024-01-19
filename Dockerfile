@@ -14,6 +14,8 @@ COPY /cogs/help.py /bot/cogs
 COPY /cogs/hug.py /bot/cogs
 COPY /cogs/kick.py /bot/cogs
 COPY /cogs/kiss.py /bot/cogs
+COPY /cogs/cry.py /bot/cogs
+COPY /cogs/dance.py /bot/cogs
 COPY /cogs/Levelsystem.py /bot/cogs
 COPY /cogs/memes.py /bot/cogs
 COPY /cogs/punch.py /bot/cogs

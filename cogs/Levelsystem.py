@@ -4,6 +4,7 @@ from discord.commands import slash_command
 import sqlite3
 from typing import Optional
 import os
+import logging
 
 # If you want to give roles to the user at any specific level upgrade, add them here
 level_roles = ["Level-5+", "Level-10+", "Level-15+"]
@@ -68,83 +69,95 @@ class Levelsys(commands.Cog):
 
     @commands.Cog.listener()
     async def check_and_assign_role(self, guild, user, role_name):
-        # Check if the role exists, otherwise create it
-        role = discord.utils.get(guild.roles, name=role_name)
-        if not role:
-            permissions = discord.Permissions(send_messages=True, read_messages=True)
-            role = await guild.create_role(name=role_name, permissions=permissions)
+        try:
+            # Check if the role exists, otherwise create it
+            role = discord.utils.get(guild.roles, name=role_name)
+            if not role:
+                permissions = discord.Permissions(send_messages=True, read_messages=True)
+                role = await guild.create_role(name=role_name, permissions=permissions)
 
-        # Add the role to the user
-        await user.add_roles(role)
+            # Add the role to the user
+            await user.add_roles(role)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
     @slash_command(description="shows the rank from a specific user")
     async def rank(self, ctx, user: Optional[discord.Member]):
-        userr = user or ctx.author
+        try:
+            userr = user or ctx.author
 
-        guild_id = ctx.guild.id
-        user_id = userr.id
+            guild_id = ctx.guild.id
+            user_id = userr.id
 
-        # Get user's data from the database
-        self.cursor.execute('''
-            SELECT xp, level FROM levels WHERE guild_id = ? AND user_id = ?
-        ''', (guild_id, user_id))
-        result = self.cursor.fetchone()
-        if result is not None:
-            xp, lvl = result
-            await ctx.respond(f"{userr.mention} is at Level {lvl} with {xp} XP.", ephemeral=True)
-        else:
-            none_embed = discord.Embed(
-                color=discord.Color.red(),
-                description="Es sind keine Daten vorhanden.")
-            none_embed.add_field(name="how i get xp?", value="You get XP when you write messages")
-            none_embed.set_thumbnail(url=ctx.author.display_avatar)
-            await ctx.respond(embed=none_embed, ephemeral=True)
+            # Get user's data from the database
+            self.cursor.execute('''
+                SELECT xp, level FROM levels WHERE guild_id = ? AND user_id = ?
+            ''', (guild_id, user_id))
+            result = self.cursor.fetchone()
+            if result is not None:
+                xp, lvl = result
+                await ctx.respond(f"{userr.mention} is at Level {lvl} with {xp} XP.", ephemeral=True)
+            else:
+                none_embed = discord.Embed(
+                    color=discord.Color.red(),
+                    description="Es sind keine Daten vorhanden.")
+                none_embed.add_field(name="how i get xp?", value="You get XP when you write messages")
+                none_embed.set_thumbnail(url=ctx.author.display_avatar)
+                await ctx.respond(embed=none_embed, ephemeral=True)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
     @slash_command(description="shows the server leaderboard")
     async def leaderboard(self, ctx):
-        range_num = 10
-        guild_id = ctx.guild.id
+        try:
+            range_num = 10
+            guild_id = ctx.guild.id
 
-        self.cursor.execute('''
-            SELECT user_id, level FROM levels WHERE guild_id = ? ORDER BY level DESC
-        ''', (guild_id,))
+            self.cursor.execute('''
+                SELECT user_id, level FROM levels WHERE guild_id = ? ORDER BY level DESC
+            ''', (guild_id,))
 
-        rows = self.cursor.fetchmany(range_num)  # Get top N users
-        leaderboard_embed = discord.Embed(
-            title=f'{ctx.guild.name} Leaderboard',
-            color=discord.Color.gold()
-        )
-
-        for rank, row in enumerate(rows, start=1):
-            user_id, level = row
-            member = ctx.guild.get_member(user_id)
-            leaderboard_embed.add_field(
-                name=f'{rank}. {member.display_name}' if member else f'{rank}. User Left',
-                value=f'Level {level}',
-                inline=False
+            rows = self.cursor.fetchmany(range_num)  # Get top N users
+            leaderboard_embed = discord.Embed(
+                title=f'{ctx.guild.name} Leaderboard',
+                color=discord.Color.gold()
             )
-            leaderboard_embed.set_thumbnail(url=ctx.guild.icon)
 
-        await ctx.respond(embed=leaderboard_embed, ephemeral=True)
+            for rank, row in enumerate(rows, start=1):
+                user_id, level = row
+                member = ctx.guild.get_member(user_id)
+                leaderboard_embed.add_field(
+                    name=f'{rank}. {member.display_name}' if member else f'{rank}. User Left',
+                    value=f'Level {level}',
+                    inline=False
+                )
+                leaderboard_embed.set_thumbnail(url=ctx.guild.icon)
+
+            await ctx.respond(embed=leaderboard_embed, ephemeral=True)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
     @slash_command(description="reset's your rank and rank roles")
     @commands.has_permissions(ban_members=True)
     async def rank_reset(self, ctx, user: Optional[discord.Member]):
-        member = user or ctx.author
+        try:
+            member = user or ctx.author
 
-        # Rollen entfernen
-        for role_name in level_roles:
-            role = discord.utils.get(member.guild.roles, name=role_name)
-            if role is not None:
-                await role.delete()
+            # Rollen entfernen
+            for role_name in level_roles:
+                role = discord.utils.get(member.guild.roles, name=role_name)
+                if role is not None:
+                    await role.delete()
 
-        self.cursor.execute('''
-            DELETE FROM levels WHERE guild_id = ? AND user_id = ?
-        ''', (ctx.guild.id, member.id))
+            self.cursor.execute('''
+                DELETE FROM levels WHERE guild_id = ? AND user_id = ?
+            ''', (ctx.guild.id, member.id))
 
-        self.conn.commit()
+            self.conn.commit()
 
-        await ctx.respond(f"{member.mention}'s data and associated roles have been reset.", ephemeral=True)
+            await ctx.respond(f"{member.mention}'s data and associated roles have been reset.", ephemeral=True)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot):

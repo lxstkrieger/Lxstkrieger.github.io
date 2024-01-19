@@ -15,16 +15,18 @@ class Dance(commands.Cog):
 
     @slash_command(description="kiss someone...")
     async def dance(self, ctx):
-
-        resp = requests.get("https://nekos.best/api/v2/dance")
-        data = resp.json()
-        image = data["results"][0]["url"]
-        kiss_embed = discord.Embed(
-            color=discord.Color.magenta(),
-            description=f"{ctx.author.mention} are dancing"
-        )
-        kiss_embed.set_image(url=image)
-        await ctx.respond(embed=kiss_embed)
+        try:
+            resp = requests.get("https://nekos.best/api/v2/dance")
+            data = resp.json()
+            image = data["results"][0]["url"]
+            kiss_embed = discord.Embed(
+                color=discord.Color.magenta(),
+                description=f"{ctx.author.mention} are dancing"
+            )
+            kiss_embed.set_image(url=image)
+            await ctx.respond(embed=kiss_embed)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot: discord.Bot):

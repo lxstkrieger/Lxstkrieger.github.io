@@ -14,15 +14,18 @@ class Kick(commands.Cog):
 
     @slash_command(description="Kick a user")
     async def kick(self, ctx, member: discord.Member):
-        if ctx.author.guild_permissions.ban_members:
-            await ctx.guild.kick(member)
-            kick_embed = discord.Embed(
-                color=discord.Color.red(),
-                description=f"{member.mention} got kicked"
-            )
-            kick_embed.set_thumbnail(url=member.display_avatar)
-            kick_embed.set_footer(text=f"Embed created from {self.bot.user}")
-            await ctx.respond(embed=kick_embed, ephemeral=True)
+        try:
+            if ctx.author.guild_permissions.ban_members:
+                await ctx.guild.kick(member)
+                kick_embed = discord.Embed(
+                    color=discord.Color.red(),
+                    description=f"{member.mention} got kicked"
+                )
+                kick_embed.set_thumbnail(url=member.display_avatar)
+                kick_embed.set_footer(text=f"Embed created from {self.bot.user}")
+                await ctx.respond(embed=kick_embed, ephemeral=True)
+        except Exception as e:
+            logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot: discord.Bot):
