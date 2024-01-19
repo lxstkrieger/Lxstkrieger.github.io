@@ -9,7 +9,6 @@ COPY /cogs/baka.py /bot/cogs/
 COPY /cogs/ban.py /bot/cogs/
 COPY /cogs/bans.py /bot/cogs
 COPY /cogs/clear.py /bot/cogs
-COPY /cogs/gameNews.py /bot/cogs
 COPY /cogs/help.py /bot/cogs
 COPY /cogs/hug.py /bot/cogs
 COPY /cogs/kick.py /bot/cogs
