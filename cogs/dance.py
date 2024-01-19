@@ -5,7 +5,7 @@ import logging
 import requests
 
 
-class Cry(commands.Cog):
+class Dance(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
@@ -14,7 +14,7 @@ class Cry(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kiss someone...")
-    async def cry(self, ctx):
+    async def dance(self, ctx):
 
         resp = requests.get("https://nekos.best/api/v2/dance")
         data = resp.json()
@@ -28,4 +28,4 @@ class Cry(commands.Cog):
 
 
 def setup(bot: discord.Bot):
-    bot.add_cog(Cry(bot))
+    bot.add_cog(Dance(bot))
