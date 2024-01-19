@@ -5,7 +5,6 @@ from youtubesearchpython import VideosSearch
 import yt_dlp
 import asyncio
 import subprocess
-from functools import partial
 
 voice_clients = {}
 ffmpeg_options = {'options': '-vn -bufsize 64k', 'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5'}
