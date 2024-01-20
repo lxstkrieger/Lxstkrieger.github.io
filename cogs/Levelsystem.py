@@ -13,7 +13,7 @@ level_thresholds = [5, 10, 15]
 class Levelsys(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
-        self.DB_path = os.path.abspath("C:/Users/Olive/Documents/DiscordBot/databases")
+        self.DB_path = os.path.abspath(os.getenv("DATABASE_PATH", "databases"))
         db_file = os.path.join(self.DB_path, 'Levelsystem.db')
         self.conn = sqlite3.connect(db_file)
         self.cursor = self.conn.cursor()
