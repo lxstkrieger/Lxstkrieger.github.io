@@ -87,6 +87,19 @@ class Help(commands.Cog):
                                        .set_thumbnail(url=ctx.guild.icon)
                     ],
                 ),
+                Page(
+                    embeds=[
+                        discord.Embed(title="Music Commands",
+                                      color=discord.Color.magenta(),
+                                      ).add_field(name="Play music command", value=" playing the music  ``` /play <url>```", inline=False)
+                                       .add_field(name="Skip music command", value=" skip's the music  ``` /skip```", inline=False)
+                                       .add_field(name="Pause's music command", value=" pause's the music  ``` /pause```", inline=False)
+                                       .add_field(name="Stop music command", value=" stop's the music  ``` /stop```", inline=False)
+                                       .add_field(name="Resume music command", value=" resume's the music  ``` /resume```", inline=False)
+                                       .add_field(name="queue command", value=" shows the active music queue  ``` /queue```", inline=False)
+                        .set_thumbnail(url=ctx.guild.icon)
+                    ],
+                ),
             ]
 
             paginator = Paginator(pages=my_pages)

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  my-bot:
+    image: 'lxstkrieger/empire_bot:1.0'
+    environment:
+      - DATABASE_PATH=/bot/databases
+    volumes:
+      - /home/flz/empire_bot/cogs:/bot/cogs
+      - /home/flz/empire_bot/databases:/bot/databases
+
+volumes:
+  my-bot-data:
+
+#AVAILABLE ENVS ARE TOKEN,DATABASE_PATH

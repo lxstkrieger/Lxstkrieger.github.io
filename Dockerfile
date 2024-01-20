@@ -2,14 +2,12 @@ FROM python:3.11
 
 WORKDIR /bot
 
-# Copy only necessary files first to leverage Docker cache
 COPY requirements.txt ./
 COPY .env ./
 COPY main.py ./
 COPY cogs/ ./cogs/
 COPY databases/ ./databases/
 
-# Combine multiple COPY commands into one
 COPY cogs/baka.py cogs/ban.py cogs/bans.py cogs/clear.py cogs/help.py \
      cogs/hug.py cogs/kick.py cogs/kiss.py cogs/cry.py cogs/dance.py \
      cogs/Levelsystem.py cogs/memes.py cogs/punch.py cogs/serverinfo.py \

@@ -10,7 +10,7 @@ intents = discord.Intents.all()
 
 bot = discord.Bot(
     intents=intents,
-    debug_guilds=[] # Guild id's
+    debug_guilds=[1092275892090327113] # Guild id's
 )
 
 log_formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')

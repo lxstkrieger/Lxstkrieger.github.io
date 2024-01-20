@@ -58,7 +58,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def play_command(self, ctx, query: str):
+    async def play(self, ctx, query: str):
         try:
             await ctx.defer()
             video_search = VideosSearch(query, limit=1)
@@ -84,7 +84,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def skip_command(self, ctx):
+    async def skip(self, ctx):
         try:
             voice_client = voice_clients.get(ctx.guild.id)
             if voice_client and voice_client.is_playing():
@@ -97,7 +97,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def pause_command(self, ctx):
+    async def pause(self, ctx):
         try:
             voice_clients[ctx.guild.id].pause()
             pause_embed = discord.Embed(
@@ -109,7 +109,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def resume_command(self, ctx):
+    async def resume(self, ctx):
         try:
             voice_clients[ctx.guild.id].resume()
             resume_embed = discord.Embed(
@@ -121,7 +121,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def stop_command(self, ctx):
+    async def stop(self, ctx):
         try:
             if ctx.guild.id in self.queue:
                 del self.queue[ctx.guild.id]
@@ -136,7 +136,7 @@ class Music(commands.Cog):
             print(err)
 
     @slash_command()
-    async def queue_command(self, ctx):
+    async def queue(self, ctx):
         try:
             await ctx.defer()
             if ctx.guild.id in self.queue and self.queue[ctx.guild.id]:
