@@ -7,10 +7,10 @@ from logging.handlers import RotatingFileHandler
 load_dotenv()
 
 intents = discord.Intents.all()
-
+debug_guilds_env = os.environ.get('DEBUG_GUILDS', '')
 bot = discord.Bot(
     intents=intents,
-    debug_guilds=[1092275892090327113] # Guild id's
+    debug_guilds=[int(guild_id) for guild_id in debug_guilds_env.split(',') if guild_id]# Guild id's
 )
 
 log_formatter = logging.Formatter('[%(levelname)s] %(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
