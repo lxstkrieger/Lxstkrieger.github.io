@@ -14,7 +14,7 @@ The bot has:
 
 
 ### Information
-There are 2 arguments in the environment file. 1. TOKEN and 2. DATABASE_PATH there you have to enter your TOKEN and the path to the database folder otherwise the bot will not work 
+There are 2 arguments in the environment file. 1. TOKEN and 2. DATABASE_PATH 3. DEBUG_GUILDS there you have to enter your TOKEN and the path to the database folder otherwise the bot will not work
 
 feel free to use my code if it helps you.
 if there are any bugs just open an issue and I will try to take care of it.
