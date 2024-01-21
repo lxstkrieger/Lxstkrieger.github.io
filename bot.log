@@ -1,0 +1,45 @@
+[ERROR] 2024-01-21 12:13:43 - An error occurred in Userinfo: 'NoneType' object has no attribute 'mention'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\userinfo.py", line 20, in userinfo
+    description=f"{member.mention}",
+                   ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'mention'
+[ERROR] 2024-01-21 12:18:52 - An error occurred in Userinfo: 'NoneType' object has no attribute 'mention'
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\userinfo.py", line 20, in userinfo
+    description=f"{member.mention}",
+                   ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'mention'
+[ERROR] 2024-01-21 13:07:29 - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Music.create_nodes() done, defined at C:\Users\Olive\Documents\DiscordBot\cogs\Music.py:14> exception=AttributeError("module 'wavelink' has no attribute 'NodePool'")>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\Music.py", line 16, in create_nodes
+    await wavelink.NodePool.create_node(bot=self.bot, host="127.0.0.1", port="2333", password="youshallnotpass",
+          ^^^^^^^^^^^^^^^^^
+AttributeError: module 'wavelink' has no attribute 'NodePool'
+[ERROR] 2024-01-21 13:14:23 - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Music.add_nodes() done, defined at C:\Users\Olive\Documents\DiscordBot\cogs\Music.py:14> exception=AttributeError("'Music' object has no attribute 'wait_until_ready'")>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\Music.py", line 15, in add_nodes
+    await self.pool.create_node(
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\pool.py", line 194, in create_node
+    await self.add_node(node, player_cls=player_cls)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\pool.py", line 220, in add_node
+    await node.connect(player_cls=player_cls)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\node.py", line 605, in connect
+    await self._client.wait_until_ready()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Music' object has no attribute 'wait_until_ready'
+[ERROR] 2024-01-21 13:20:02 - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Music.add_nodes() done, defined at C:\Users\Olive\Documents\DiscordBot\cogs\Music.py:14> exception=AttributeError("'Music' object has no attribute 'wait_until_ready'")>
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\Music.py", line 15, in add_nodes
+    await self.pool.create_node(
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\pool.py", line 194, in create_node
+    await self.add_node(node, player_cls=player_cls)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\pool.py", line 220, in add_node
+    await node.connect(player_cls=player_cls)
+  File "C:\Users\Olive\Documents\DiscordBot\venv\Lib\site-packages\mafic\node.py", line 605, in connect
+    await self._client.wait_until_ready()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Music' object has no attribute 'wait_until_ready'

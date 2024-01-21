@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.commands import slash_command
+from discord.commands import slash_command, Option
 import logging
 
 
@@ -13,7 +13,7 @@ class Userinfo(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="shows info from a specific user")
-    async def userinfo(self, ctx, member: discord.Member):
+    async def userinfo(self, ctx, member: Option(discord.Member, autocomplete=True, required=True)):
         try:
             userinfo_embed = discord.Embed(
                 title="Userinfo for",
@@ -22,6 +22,9 @@ class Userinfo(commands.Cog):
             )
             userinfo_embed.add_field(name="Server Joined at", value=member.joined_at.strftime("%Y-%m-%d %H:%M:%S"), inline=True)
             userinfo_embed.add_field(name="Highest role", value=f"{member.top_role.mention}", inline=True)
+            userinfo_embed.add_field(name="Nickname", value=f"{member.nick}")
+            userinfo_embed.add_field(name="User ID", value=f"{member.id}")
+            userinfo_embed.add_field(name=f"Avatar Image", value=f"{member.avatar.url}")
             userinfo_embed.set_thumbnail(url=member.avatar)
             await ctx.respond(embed=userinfo_embed, ephemeral=True)
         except Exception as e:
