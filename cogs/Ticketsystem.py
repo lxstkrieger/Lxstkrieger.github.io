@@ -64,10 +64,11 @@ class Ticketsystem(commands.Cog):
     async def setupticketsystem(self, ctx):
         try:
             await ctx.guild.create_role(name="🙋🏻‍♂️Support Team🙋🏻‍♂️", colour=discord.Colour(0xE03400))
-            em = discord.Embed(title="Information",
+            setup_embed = discord.Embed(title="Information",
                                description="Ticket System was successfully installed. | Attention If you run ```/setupticketsystem``` again, the ticket system will no longer work and report an error. Since there are there 2 roles of ticket helper you have to delete one then, This code is still in development for problems/questions contact me on Discord : Talha2018#0001",
                                color=0x00ff00)
-            await ctx.send(embed=em)
+            setup_embed.set_footer(text=f"Embed created from {self.bot.user}")
+            await ctx.send(embed=setup_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 

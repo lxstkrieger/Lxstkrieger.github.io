@@ -22,7 +22,12 @@ class Memes(commands.Cog):
             if meme_response.status_code == 200:
                 meme_data = meme_response.json()
                 meme_url = meme_data.get('url')
-                await ctx.respond(f'Here is a meme for you: {meme_url}')
+                meme_embed = discord.Embed(
+                    color=discord.Color.magenta()
+                )
+                meme_embed.set_image(url=f"{meme_url}")
+                meme_embed.set_footer(text=f"Embed created from {self.bot.user}")
+                ctx.respond(embed=meme_embed)
             else:
                 await ctx.send('Error fetching meme.')
         except Exception as e:

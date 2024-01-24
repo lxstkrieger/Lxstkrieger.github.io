@@ -22,6 +22,7 @@ class Kick(commands.Cog):
                     description=f"{member.mention} got kicked"
                 )
                 kick_embed.set_thumbnail(url=member.display_avatar)
+                kick_embed.set_image(url="https://media1.tenor.com/m/5JmSgyYNVO0AAAAC/asdf-movie.gif")
                 kick_embed.set_footer(text=f"Embed created from {self.bot.user}")
                 await ctx.respond(embed=kick_embed, ephemeral=True)
         except Exception as e:

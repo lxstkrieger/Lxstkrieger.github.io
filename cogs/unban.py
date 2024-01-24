@@ -23,6 +23,8 @@ class Unban(commands.Cog):
                 color=discord.Color.green()
             )
             unban_embed.add_field(name="reason", value=reason)
+            unban_embed.set_image(url="https://media1.tenor.com/m/B3iUTS5HXAAAAAAC/quby-cute.gif")
+            unban_embed.set_thumbnail(url=f"{user.display_avatar}")
             await ctx.response.send_message(embed=unban_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)

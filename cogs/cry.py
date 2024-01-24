@@ -19,12 +19,13 @@ class Cry(commands.Cog):
             resp = requests.get("https://nekos.best/api/v2/cry")
             data = resp.json()
             image = data["results"][0]["url"]
-            kiss_embed = discord.Embed(
+            cry_embed = discord.Embed(
                 color=discord.Color.magenta(),
                 description=f"{ctx.author.mention} are crying"
             )
-            kiss_embed.set_image(url=image)
-            await ctx.respond(embed=kiss_embed)
+            cry_embed.set_image(url=image)
+            cry_embed.set_footer(text=f"Embed created from {self.bot.user}")
+            await ctx.respond(embed=cry_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 

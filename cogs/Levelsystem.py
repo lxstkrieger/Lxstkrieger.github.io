@@ -98,12 +98,13 @@ class Levelsys(commands.Cog):
                 xp, lvl = result
                 await ctx.respond(f"{userr.mention} is at Level {lvl} with {xp} XP.", ephemeral=True)
             else:
-                none_embed = discord.Embed(
+                rank_embed = discord.Embed(
                     color=discord.Color.red(),
                     description="Es sind keine Daten vorhanden.")
-                none_embed.add_field(name="how i get xp?", value="You get XP when you write messages")
-                none_embed.set_thumbnail(url=ctx.author.display_avatar)
-                await ctx.respond(embed=none_embed, ephemeral=True)
+                rank_embed.add_field(name="how i get xp?", value="You get XP when you write messages")
+                rank_embed.set_thumbnail(url=ctx.author.display_avatar)
+                rank_embed.set_footer(text=f"Embed created from {self.bot.user}")
+                await ctx.respond(embed=rank_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
@@ -132,6 +133,7 @@ class Levelsys(commands.Cog):
                     inline=False
                 )
                 leaderboard_embed.set_thumbnail(url=ctx.guild.icon)
+                leaderboard_embed.set_footer(text=f"Embed created from {self.bot.user}")
 
             await ctx.respond(embed=leaderboard_embed, ephemeral=True)
         except Exception as e:
@@ -154,8 +156,12 @@ class Levelsys(commands.Cog):
             ''', (ctx.guild.id, member.id))
 
             self.conn.commit()
-
-            await ctx.respond(f"{member.mention}'s data and associated roles have been reset.", ephemeral=True)
+            rank_reset_embed= discord.Embed(
+                color=discord.Color.magenta(),
+                description=f"{member.mention}'s data and associated roles have been reset."
+            )
+            rank_reset_embed.set_footer(text=f"Embed created from {self.bot.user}")
+            await ctx.respond(embed=rank_reset_embed, ephemeral=True)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 

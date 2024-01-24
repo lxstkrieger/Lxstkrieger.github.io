@@ -24,6 +24,7 @@ class Kiss(commands.Cog):
                 description=f"{ctx.author.mention} kissed {member.mention}"
             )
             kiss_embed.set_image(url=image)
+            kiss_embed.set_footer(text=f"Embed created from {self.bot.user}")
             await ctx.respond(embed=kiss_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)

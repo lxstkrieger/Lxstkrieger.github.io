@@ -19,12 +19,14 @@ class Dance(commands.Cog):
             resp = requests.get("https://nekos.best/api/v2/dance")
             data = resp.json()
             image = data["results"][0]["url"]
-            kiss_embed = discord.Embed(
+            dance_embed = discord.Embed(
                 color=discord.Color.magenta(),
                 description=f"{ctx.author.mention} are dancing"
             )
-            kiss_embed.set_image(url=image)
-            await ctx.respond(embed=kiss_embed)
+            dance_embed.set_image(url=image)
+            dance_embed.set_footer(text=f"Embed created from {self.bot.user}")
+
+            await ctx.respond(embed=dance_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 

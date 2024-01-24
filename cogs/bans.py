@@ -20,18 +20,16 @@ class Bans(commands.Cog):
     async def bans(self, ctx):
         try:
             await ctx.defer()
-            embed = discord.Embed(title=f"List of Bans in {ctx.guild}", timestamp=datetime.now(),
-                                  color=discord.Colour.red())
+            bans_embed = discord.Embed(title=f"List of Bans in {ctx.guild}", timestamp=datetime.now(), color=discord.Colour.red())
             async for entry in ctx.guild.bans():
-                if len(embed.fields) >= 25:
+                if len(bans_embed.fields) >= 25:
                     break
-                if len(embed) > 5900:
-                    embed.add_field(name="Too many bans to list", value="", inline=True)
+                if len(bans_embed) > 5900:
+                    bans_embed.add_field(name="Too many bans to list", value="", inline=True)
                 else:
-                    embed.add_field(name=f"Ban",
-                                    value=f"Username: {entry.user.name}#{entry.user.discriminator}\nReason: {entry.reason}\nUser ID: {entry.user.id}\nIs Bot: {entry.user.bot}",
-                                    inline=False)
-            await ctx.respond(embed=embed)
+                    bans_embed.add_field(name=f"Ban", value=f"Username: {entry.user.name}#{entry.user.discriminator}\nReason: {entry.reason}\nUser ID: {entry.user.id}\nIs Bot: {entry.user.bot}", inline=False)
+                    bans_embed.set_footer(text=f"Embed created from {self.bot.user}")
+            await ctx.respond(embed=bans_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 

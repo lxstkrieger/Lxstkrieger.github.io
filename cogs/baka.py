@@ -19,12 +19,13 @@ class Baka(commands.Cog):
         resp = requests.get("https://nekos.best/api/v2/baka")
         data = resp.json()
         image = data["results"][0]["url"]
-        kiss_embed = discord.Embed(
+        baka_embed = discord.Embed(
             color=discord.Color.magenta(),
             description=f"{member.mention} is a BAKA BAKA BAKA BAKA !!!!"
         )
-        kiss_embed.set_image(url=image)
-        await ctx.respond(embed=kiss_embed)
+        baka_embed.set_image(url=image)
+        baka_embed.set_footer(text=f"Embed created from {self.bot.user}")
+        await ctx.respond(embed=baka_embed)
 
 
 def setup(bot: discord.Bot):
