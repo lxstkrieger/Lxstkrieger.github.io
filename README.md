@@ -1,4 +1,4 @@
-# Please dont use the Music function i must fix issues with Lavalink
+
 
 
 ## Empire Bot
