@@ -19,7 +19,7 @@ The bot has:
 ### Information
 There are 2 arguments in the environment file. 1. TOKEN and 2. DATABASE_PATH 3. DEBUG_GUILDS there you have to enter your TOKEN and the path to the database folder otherwise the bot will not work
  ~~~
-sudo docker run -e TOKEN=$TOKEN -e DATABASE_PATH=$DATABASE_PATH -e DEBUG_GUILDS=$DEBUG_GUILDS,$DEBUG_GUILDS -d lxstkrieger/empire_bot:1.0
+sudo docker run -e TOKEN=$TOKEN -e DATABASE_PATH=$DATABASE_PATH -e DEBUG_GUILDS=$DEBUG_GUILDS,$DEBUG_GUILDS -d lxstkrieger/empire_bot:latest
  ~~~
 
 feel free to use my code if it helps you.
