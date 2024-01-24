@@ -1,3 +1,6 @@
+#Please dont use the Music function i must fix issues with Lavalink
+
+
 ## Empire Bot
 
 I'm not the best developer. I've been doing this as a hobby for a long time. I wanted my first project on GitHub to be a discord bot because I want people to have fun with it.
