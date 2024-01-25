@@ -1,3 +1,4 @@
 
 # Ignoring Enviroment File
 .env
+/.idea/
