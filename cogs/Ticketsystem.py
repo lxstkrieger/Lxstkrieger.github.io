@@ -17,12 +17,10 @@ class Ticketsystem(commands.Cog):
         try:
             ticket_channel = await ctx.guild.create_text_channel(name=f"ticket-{ctx.author.display_name}")
 
-            # Set permissions for the author
             await ticket_channel.set_permissions(ctx.author, send_messages=True, read_messages=True, add_reactions=True,
                                                  embed_links=True, attach_files=True, read_message_history=True,
                                                  external_emojis=True)
 
-            # Set permissions for the Ticket-Helper role
             guild = ctx.guild
             rolesearch = discord.utils.get(guild.roles, name="🙋🏻‍♂️Support Team🙋🏻‍♂️")
 

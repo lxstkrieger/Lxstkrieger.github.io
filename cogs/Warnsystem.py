@@ -20,7 +20,6 @@ class WarnSystem(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     def create_table(self):
-        # Create the warnings table if it doesn't exist
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS warnings (
                             guild_id INTEGER,
                             user_id INTEGER,
@@ -28,17 +27,14 @@ class WarnSystem(commands.Cog):
         self.conn.commit()
 
     def add_warning(self, guild_id, user_id, reason):
-        # Add a warning to the database
         self.cursor.execute("INSERT INTO warnings VALUES (?, ?, ?)", (guild_id, user_id, reason))
         self.conn.commit()
 
     def get_warnings(self, guild_id, user_id):
-        # Get all warnings for a user in a guild
         self.cursor.execute("SELECT reason FROM warnings WHERE guild_id=? AND user_id=?", (guild_id, user_id))
         return self.cursor.fetchall()
 
     def remove_last_warning(self, guild_id, user_id):
-        # Remove the last warning for a user in a guild
         self.cursor.execute("""
             DELETE FROM warnings
             WHERE rowid IN (
