@@ -53,6 +53,8 @@ class Help(commands.Cog):
                                        .add_field(name="hug command", value=" Hug a User  ``` /hug <@Member>```", inline=False)
                                        .add_field(name="punch command", value=" Punch a User  ``` /punch <@Member>```", inline=False)
                                        .add_field(name="kiss command", value=" Kiss a User  ``` /kiss <@Member>```", inline=False)
+                                       .add_field(name="sleep command", value=" You are sleeping  ``` /sleep ```", inline=False)
+                                       .add_field(name="slap command", value=" Slap a User  ``` /slap <@Member>```", inline=False)
                                        .add_field(name="tic tac toe command", value=" play tic tac toe with someone  ``` /tic``", inline=False)
                                        .set_thumbnail(url=ctx.guild.icon)
                                        .set_footer(text=f"Embed created from {self.bot.user}")
