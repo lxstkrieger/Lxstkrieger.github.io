@@ -1,0 +1,6 @@
+[ERROR] 2024-01-25 15:55:36 - An error occurred in Slap: 'results'
+Traceback (most recent call last):
+  File "C:\Users\fytub\PycharmProjects\pythonProject\EmpireBot\cogs\slap.py", line 21, in slap
+    image = data["results"][0]["url"]
+            ~~~~^^^^^^^^^^^
+KeyError: 'results'
