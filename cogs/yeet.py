@@ -5,7 +5,7 @@ import logging
 import requests
 
 
-class Hug(commands.Cog):
+class Yeet(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
@@ -13,22 +13,22 @@ class Hug(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="Huging someone")
-    async def hug(self, ctx, member: discord.Member):
+    @slash_command(description="someone yeet's you")
+    async def yeet(self, ctx, member: discord.Member):
         try:
-            resp = requests.get("https://nekos.best/api/v2/hug")
+            resp = requests.get("https://nekos.best/api/v2/yeet")
             data = resp.json()
             image = data["results"][0]["url"]
-            hug_embed = discord.Embed(
+            yeet_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} hugged {member.mention}"
+                description=f"{ctx.author.mention} yeet's {member.mention}"
             )
-            hug_embed.set_image(url=image)
-            hug_embed.set_footer(text=f"Embed created from {self.bot.user}")
-            await ctx.respond(embed=hug_embed)
+            yeet_embed.set_image(url=image)
+            yeet_embed.set_footer(text=f"Embed created from {self.bot.user}")
+            await ctx.respond(embed=yeet_embed)
         except Exception as e:
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 
 def setup(bot: discord.Bot):
-    bot.add_cog(Hug(bot))
+    bot.add_cog(Yeet(bot))

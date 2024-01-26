@@ -48,14 +48,29 @@ class Help(commands.Cog):
                     embeds=[
                         discord.Embed(title="Fun Commands",
                                       color=discord.Color.magenta(),
-                                      ).add_field(name="baka command", value=" A User is a BAKA  ``` /baka <@Member>```",
-                                                  inline=False)
+                                      ).add_field(name="baka command", value=" A User is a BAKA  ``` /baka <@Member>```", inline=False)
                                        .add_field(name="hug command", value=" Hug a User  ``` /hug <@Member>```", inline=False)
                                        .add_field(name="punch command", value=" Punch a User  ``` /punch <@Member>```", inline=False)
                                        .add_field(name="kiss command", value=" Kiss a User  ``` /kiss <@Member>```", inline=False)
                                        .add_field(name="sleep command", value=" You are sleeping  ``` /sleep ```", inline=False)
                                        .add_field(name="slap command", value=" Slap a User  ``` /slap <@Member>```", inline=False)
                                        .add_field(name="tic tac toe command", value=" play tic tac toe with someone  ``` /tic``", inline=False)
+                                       .add_field(name="blush command", value=" anyone ist blushing ``` /blush ```", inline=False)
+                                       .add_field(name="cry command", value=" you are crying ``` /cry ```",inline=False)
+                                       .add_field(name="dance command", value=" you are dancing ``` /dance ```", inline=False)
+                                       .add_field(name="lurk command", value=" you lurk ``` /lurk ```", inline=False)
+                                       .add_field(name="peck command", value=" you peck him/her ``` /peck ```", inline=False)
+                                       .add_field(name="pocke command", value=" pocke him/her ``` /pocke ```", inline=False)
+                                       .add_field(name="shoot command", value=" shoot at him/her ``` /shoot ```", inline=False)
+                                       .add_field(name="shrug command", value=" shrug him/her ``` /shrug ```", inline=False)
+                                       .add_field(name="smile command", value=" smile ``` /smile ```", inline=False)
+                                       .add_field(name="smug command", value=" smug him/her ``` /smug ```", inline=False)
+                                       .add_field(name="stare command", value=" stare at him/her ``` /stare ```", inline=False)
+                                       .add_field(name="think command", value=" think about it ``` /think ```", inline=False)
+                                       .add_field(name="tickle command", value=" tickle him/her ``` /tickle ```", inline=False)
+                                       .add_field(name="wave command", value=" wave to someone ``` /wave ```", inline=False)
+                                       .add_field(name="wink command", value=" wick to him/her ``` /wink ```", inline=False)
+                                       .add_field(name="yeet command", value=" yeet him/her ``` /yeet ```", inline=False)
                                        .set_thumbnail(url=ctx.guild.icon)
                                        .set_footer(text=f"Embed created from {self.bot.user}")
                     ],
