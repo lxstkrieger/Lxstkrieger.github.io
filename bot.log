@@ -1,0 +1,6 @@
+[ERROR] 2024-01-24 18:34:01 - An error occurred in Clear: 'Webhook' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\Olive\Documents\DiscordBot\cogs\clear.py", line 32, in clear
+    await ctx.followup(embed=clear_after_embed, delete_after=4)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'Webhook' object is not callable
