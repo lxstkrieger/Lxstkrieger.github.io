@@ -13,7 +13,7 @@ class Wave(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="waveing")
+    @slash_command(description="someone is waveing to someone")
     async def wave(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/wave")
@@ -21,7 +21,7 @@ class Wave(commands.Cog):
             image = data["results"][0]["url"]
             wave_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} is waveing to {member.mention}"
+                description=f"{ctx.author.mention} wave's {member.mention}"
             )
             wave_embed.set_image(url=image)
             wave_embed.set_footer(text=f"Embed created from {self.bot.user}")

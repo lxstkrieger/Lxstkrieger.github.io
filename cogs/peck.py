@@ -13,7 +13,7 @@ class Peck(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="pecking??")
+    @slash_command(description="Giving someone a little kiss")
     async def peck(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/peck")

@@ -13,7 +13,7 @@ class Smug(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="Smuging")
+    @slash_command(description="someone Smug's at you")
     async def smug(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/smug")

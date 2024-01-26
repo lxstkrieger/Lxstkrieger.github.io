@@ -13,7 +13,7 @@ class Smile(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="smileing")
+    @slash_command(description="someone is just smileing")
     async def smile(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/smile")

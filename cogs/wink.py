@@ -13,7 +13,7 @@ class Wink(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="winking??? (idk if this is an acturally word)")
+    @slash_command(description="someone wink's at you")
     async def wink(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/wink")

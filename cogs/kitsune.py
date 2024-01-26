@@ -13,7 +13,7 @@ class Kitsune(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="kitsune")
+    @slash_command(description="gives an picture from an kitsune")
     async def kitsune(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/kitsune")

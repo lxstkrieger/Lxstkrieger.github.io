@@ -13,7 +13,7 @@ class Shoot(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="shoot")
+    @slash_command(description="someone shoots (not at someone just shooting)")
     async def shoot(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/shoot")
@@ -21,7 +21,7 @@ class Shoot(commands.Cog):
             image = data["results"][0]["url"]
             shoot_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} is shooting at {member.mention}"
+                description=f"{ctx.author.mention} shoot's"
             )
             shoot_embed.set_image(url=image)
             shoot_embed.set_footer(text=f"Embed created from {self.bot.user}")

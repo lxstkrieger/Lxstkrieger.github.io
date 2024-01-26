@@ -13,7 +13,7 @@ class Waifu(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="Waifuing??? (idk if this is an acturally word)")
+    @slash_command(description="gave you an picture from an Waifu")
     async def waifu(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/waifu")

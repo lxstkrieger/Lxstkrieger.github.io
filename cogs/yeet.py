@@ -13,7 +13,7 @@ class Yeet(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="yeeting")
+    @slash_command(description="someone yeet's you")
     async def yeet(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/yeet")
@@ -21,7 +21,7 @@ class Yeet(commands.Cog):
             image = data["results"][0]["url"]
             yeet_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} is yeeting {member.mention}"
+                description=f"{ctx.author.mention} yeet's {member.mention}"
             )
             yeet_embed.set_image(url=image)
             yeet_embed.set_footer(text=f"Embed created from {self.bot.user}")

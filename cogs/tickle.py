@@ -13,7 +13,7 @@ class Tickle(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="tickeling")
+    @slash_command(description="someone tickles someone")
     async def tickle(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/tickle")
@@ -21,7 +21,7 @@ class Tickle(commands.Cog):
             image = data["results"][0]["url"]
             tickle_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} tickleing {member.mention}"
+                description=f"{ctx.author.mention} tickle's {member.mention}"
             )
             tickle_embed.set_image(url=image)
             tickle_embed.set_footer(text=f"Embed created from {self.bot.user}")

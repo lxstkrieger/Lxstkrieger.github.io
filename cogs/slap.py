@@ -13,7 +13,7 @@ class Slap(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="slap's ...")
+    @slash_command(description="someone slap's someone")
     async def slap(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/slap")
