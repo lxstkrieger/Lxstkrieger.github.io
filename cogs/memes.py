@@ -16,7 +16,7 @@ class Memes(commands.Cog):
     @slash_command(description='sends a meme')
     async def meme(self, ctx):
         try:
-            # Make a request to the meme API
+            # The meme api query is made here.
             meme_response = requests.get('https://meme-api.com/gimme')
 
             if meme_response.status_code == 200:

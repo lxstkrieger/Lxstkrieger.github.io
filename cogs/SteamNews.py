@@ -16,6 +16,5 @@ class SteamNews(commands.Cog):
     # TODO: Steamworks SDK und Steamworks Web API nutzen um die Steam News zu bekommen dafür gehst du auf die Steam seite und holst dir API-KEY und APP-ID
 
 
-
 def setup(bot: discord.Bot):
     bot.add_cog(SteamNews(bot))

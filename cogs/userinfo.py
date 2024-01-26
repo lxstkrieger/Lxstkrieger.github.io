@@ -1,20 +1,24 @@
+# Import necessary modules for Discord API, extension library, logging, and slash command related components
 import discord
 from discord.ext import commands
 from discord.commands import slash_command, Option
 import logging
 
-
+# Define Userinfo as a Discord cog for handling user information commands
 class Userinfo(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
+    # Listener that runs when the bot is ready
     @commands.Cog.listener()
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="shows info from a specific user")
+    # Slash command to show information about a specific user
+    @slash_command(description="Shows information about a specific user")
     async def userinfo(self, ctx, member: Option(discord.Member, autocomplete=True, required=True)):
         try:
+            # Create an embed with user information
             userinfo_embed = discord.Embed(
                 title="Userinfo for",
                 description=f"{member.mention}",
@@ -27,8 +31,11 @@ class Userinfo(commands.Cog):
             userinfo_embed.add_field(name=f"Avatar Image", value=f"{member.avatar.url}")
             userinfo_embed.set_thumbnail(url=member.avatar)
             userinfo_embed.set_footer(text=f"Embed created from {self.bot.user}")
+
+            # Send the embed as an ephemeral response to the command user
             await ctx.respond(embed=userinfo_embed, ephemeral=True)
         except Exception as e:
+            # Log any errors that occur during the userinfo command
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
 

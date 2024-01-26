@@ -1,21 +1,25 @@
+# Import necessary modules from the Discord API and extension library
 import discord
 from discord.ext import commands
 from discord.commands import slash_command
 from discord.ext.pages import Paginator, Page
 import logging
 
-
+# Define a Discord cog for handling help-related commands
 class Help(commands.Cog):
     def __init__(self, bot: discord.Bot):
         self.bot = bot
 
+    # Listener that runs when the cog is loaded and ready
     @commands.Cog.listener()
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
+    # Command for displaying help information using a paginated embed
     @slash_command(description="help command")
     async def help(self, ctx):
         try:
+            # Define pages for the help command, each page containing information about specific command categories
             my_pages = [
                 Page(
                     embeds=[
@@ -29,7 +33,6 @@ class Help(commands.Cog):
                         .add_field(name="timeout command", value=" timeout's a User  ``` /timeout <@Member> <Duration in Seconds>```", inline=False)
                         .set_thumbnail(url=ctx.guild.icon)
                         .set_footer(text=f"Embed created from {self.bot.user}")
-
                     ],
                 ),
                 Page(
@@ -126,12 +129,14 @@ class Help(commands.Cog):
                 ),
             ]
 
+            # Create a paginator and respond with paginated help information
             paginator = Paginator(pages=my_pages)
             await paginator.respond(ctx.interaction, ephemeral=True)
 
         except Exception as e:
+            # Log an error to the bot.log file if there is an exception
             logging.error(f'An error occurred in {self.__class__.__name__}: {e}', exc_info=True)
 
-
+# Function to set up the cog when the bot is started
 def setup(bot: discord.Bot):
     bot.add_cog(Help(bot))
