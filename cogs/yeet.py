@@ -14,7 +14,7 @@ class Yeet(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="yeeting")
-    async def wink(self, ctx, member: discord.Member):
+    async def yeet(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/yeet")
             data = resp.json()
