@@ -14,7 +14,7 @@ class Stare(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="staring")
-    async def husbando(self, ctx, member: discord.Member):
+    async def stare(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/stare")
             data = resp.json()

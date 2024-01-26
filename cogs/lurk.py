@@ -14,14 +14,14 @@ class Lurk(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="lurk")
-    async def lurk(self, ctx, member: discord.Member):
+    async def lurk(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/lurk")
             data = resp.json()
             image = data["results"][0]["url"]
             lurk_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} lurking {member.mention}"
+                description=f"{ctx.author.mention} lurking"
             )
             lurk_embed.set_image(url=image)
             lurk_embed.set_footer(text=f"Embed created from {self.bot.user}")
