@@ -14,14 +14,14 @@ class Waifu(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="Waifuing??? (idk if this is an acturally word)")
-    async def waifu(self, ctx, member: discord.Member):
+    async def waifu(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/waifu")
             data = resp.json()
             image = data["results"][0]["url"]
             waifu_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} Waifuing's {member.mention}"
+                description=f"{ctx.author.mention} Waifu"
             )
             waifu_embed.set_image(url=image)
             waifu_embed.set_footer(text=f"Embed created from {self.bot.user}")

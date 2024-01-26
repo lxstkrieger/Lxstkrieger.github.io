@@ -21,7 +21,7 @@ class Wave(commands.Cog):
             image = data["results"][0]["url"]
             wave_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} waveing {member.mention}"
+                description=f"{ctx.author.mention} is waveing to {member.mention}"
             )
             wave_embed.set_image(url=image)
             wave_embed.set_footer(text=f"Embed created from {self.bot.user}")

@@ -21,7 +21,7 @@ class Wink(commands.Cog):
             image = data["results"][0]["url"]
             wink_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} winking {member.mention}"
+                description=f"{ctx.author.mention} wink's at {member.mention}"
             )
             wink_embed.set_image(url=image)
             wink_embed.set_footer(text=f"Embed created from {self.bot.user}")

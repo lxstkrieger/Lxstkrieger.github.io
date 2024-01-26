@@ -14,14 +14,14 @@ class Smug(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="Smuging")
-    async def smug(self, ctx, member: discord.Member):
+    async def smug(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/smug")
             data = resp.json()
             image = data["results"][0]["url"]
             smug_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} smuging {member.mention}"
+                description=f"{ctx.author.mention} smug's"
             )
             smug_embed.set_image(url=image)
             smug_embed.set_footer(text=f"Embed created from {self.bot.user}")

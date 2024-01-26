@@ -14,14 +14,14 @@ class Kitsune(commands.Cog):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
     @slash_command(description="kitsune")
-    async def kitsune(self, ctx, member: discord.Member):
+    async def kitsune(self, ctx):
         try:
             resp = requests.get("https://nekos.best/api/v2/kitsune")
             data = resp.json()
             image = data["results"][0]["url"]
             kitsune_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} kitsune {member.mention}"
+                description=f"{ctx.author.mention} kitsune"
             )
             kitsune_embed.set_image(url=image)
             kitsune_embed.set_footer(text=f"Embed created from {self.bot.user}")

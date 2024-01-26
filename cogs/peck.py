@@ -21,7 +21,7 @@ class Peck(commands.Cog):
             image = data["results"][0]["url"]
             peck_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} pecking {member.mention}"
+                description=f"{ctx.author.mention} is pecking {member.mention}"
             )
             peck_embed.set_image(url=image)
             peck_embed.set_footer(text=f"Embed created from {self.bot.user}")

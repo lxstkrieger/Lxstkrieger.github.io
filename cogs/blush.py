@@ -13,7 +13,7 @@ class Blush(commands.Cog):
     async def on_ready(self):
         logging.info(f'Cog {self.__class__.__name__} is ready.')
 
-    @slash_command(description="blushing??? (idk if this is an acturally word)")
+    @slash_command(description="blushes")
     async def blush(self, ctx, member: discord.Member):
         try:
             resp = requests.get("https://nekos.best/api/v2/blush")

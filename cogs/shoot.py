@@ -21,7 +21,7 @@ class Shoot(commands.Cog):
             image = data["results"][0]["url"]
             shoot_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} shooting {member.mention}"
+                description=f"{ctx.author.mention} is shooting at {member.mention}"
             )
             shoot_embed.set_image(url=image)
             shoot_embed.set_footer(text=f"Embed created from {self.bot.user}")

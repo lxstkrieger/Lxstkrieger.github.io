@@ -21,7 +21,7 @@ class Poke(commands.Cog):
             image = data["results"][0]["url"]
             poke_embed = discord.Embed(
                 color=discord.Color.magenta(),
-                description=f"{ctx.author.mention} pokeing {member.mention}"
+                description=f"{ctx.author.mention} poke's {member.mention}"
             )
             poke_embed.set_image(url=image)
             poke_embed.set_footer(text=f"Embed created from {self.bot.user}")
