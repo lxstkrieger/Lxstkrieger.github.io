@@ -1,4 +1,8 @@
 
+body {
+  margin-bottom: 70px;
+}
+
 .navbar-scroll .nav-link,
 .navbar-scroll .fa-bars,
 .navbar-scroll .navar-brand {
@@ -84,4 +88,56 @@
 .card-img-fixed {
   height: 200px; /* Ändere dies entsprechend der gewünschten Höhe */
   object-fit: cover;
+}
+
+form {
+  background-color: #444;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: calc(100% + 40px);
+  margin-left: -20px;
+}
+
+form label, form button {
+  color: #fff;
+}
+
+form textarea, form input {
+  background-color: #555;
+  color: #fff;
+  resize: none;
+}
+
+.char-count {
+  color: #fff;
+  margin-top: 5px;
+}
+
+.btn-outline-secondary {
+  border-color: #fff;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.icons-container {
+  text-align: center;
+  background-color: #444;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.icons-container a {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.impressum-footer{
+  margin-top: auto;
+  margin-bottom: 0;
 }
